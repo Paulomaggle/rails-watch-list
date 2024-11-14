@@ -1,0 +1,16 @@
+<h1>Here is the detail of your list: </h1>
+
+<div>List name : <%= @list.name %></div>
+<div class="btn btn-outline-primary">
+  <%= link_to "go back to all lists", lists_path %>
+</div>
+
+<p>bookmarks in your list : </p>
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <%= bookmark.movie.title %> - <%= bookmark.comment %>
+    <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+</ul>
+<% end %>
+
+<div class="btn btn-outline-primary"><%= link_to "add a new bookmark", new_list_bookmark_path(@list) %></div>
