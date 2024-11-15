@@ -9,7 +9,17 @@
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <%= bookmark.movie.title %> - <%= bookmark.comment %>
-    <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+    <li><%=  %></li>
+    <li><%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%></li>
+    <li><% if bookmark.movie.poster_url.present? %>
+          <div class="mt-2 mb-2 text-center">
+            <img src="https://image.tmdb.org/t/p/original<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>" class="img-fluid" style="max-width: 150px;">
+          </div>
+        <% else %>
+          <div class="mt-2 mb-2 text-center">
+            <p>No image available</p>
+          </div>
+        <% end %></li>
 </ul>
 <% end %>
 

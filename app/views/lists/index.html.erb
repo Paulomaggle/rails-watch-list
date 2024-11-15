@@ -1,9 +1,9 @@
-<h1>All your lists</h1>
-<ul>
+<div class= "container mx-auto"><h1>All your lists</h1>
+<ul class= "row align-self-center">
   <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
+   <div> <%= link_to list.name, list_path(list), class: "text-decoration-none btn btn-primary mt-3" %> </div>
   <% end %>
 </ul>
 
 <div class="btn btn-outline-primary"><%= link_to "add a new list", new_list_path %></div>
-
+</div>
